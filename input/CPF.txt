@@ -1,0 +1,181 @@
+<table class="table table-hover table-info"> 
+ <caption> 
+  <span style="float: right;">(หน่วย: ล้านบาท)</span> 
+ </caption> 
+ <thead> 
+  <tr align="center" valign="middle"> 
+   <th height="30"><strong>งวดงบการเงิน<br> ณ วันที่</strong></th> 
+   <th><strong>งบปี&nbsp;56<br>31/12/2556</strong></th> 
+   <th><strong>งบปี&nbsp;57<br>31/12/2557</strong></th> 
+   <th><strong>งบปี&nbsp;58<br>31/12/2558</strong></th> 
+   <th><strong>งบปี&nbsp;59<br>31/12/2559</strong></th> 
+   <th><strong>&nbsp;</strong></th> 
+  </tr> 
+ </thead> 
+ <tbody> 
+  <tr> 
+   <td height="15" style="text-align:left;" colspan="5"><strong>บัญชีทางการเงินที่สำคัญ</strong></td> 
+   <td style="background-color: #EAF0FE;">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td height="15" style="text-align:left;" valign="middle">สินทรัพย์รวม</td> 
+   <td>365,003.12&nbsp;&nbsp;</td> 
+   <td>416,763.86&nbsp;&nbsp;</td> 
+   <td>494,262.74&nbsp;&nbsp;</td> 
+   <td>582,179.03&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td height="15" style="text-align:left;">หนี้สินรวม</td> 
+   <td>235,430.55&nbsp;&nbsp;</td> 
+   <td>252,797.61&nbsp;&nbsp;</td> 
+   <td>320,537.79&nbsp;&nbsp;</td> 
+   <td>388,472.62&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td height="15" style="text-align:left;">ส่วนของผู้ถือหุ้น</td> 
+   <td>109,794.60&nbsp;&nbsp;</td> 
+   <td>117,532.26&nbsp;&nbsp;</td> 
+   <td>116,364.68&nbsp;&nbsp;</td> 
+   <td>133,697.68&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td height="15" style="text-align:left;">มูลค่าหุ้นที่เรียกชำระแล้ว</td> 
+   <td>7,742.94&nbsp;&nbsp;</td> 
+   <td>7,742.94&nbsp;&nbsp;</td> 
+   <td>7,742.94&nbsp;&nbsp;</td> 
+   <td>7,742.94&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">รายได้รวม</td> 
+   <td>404,524.58&nbsp;&nbsp;</td> 
+   <td>438,370.73&nbsp;&nbsp;</td> 
+   <td>439,413.85&nbsp;&nbsp;</td> 
+   <td>476,682.69&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">กำไรสุทธิ</td> 
+   <td>7,065.25&nbsp;&nbsp;</td> 
+   <td>10,561.70&nbsp;&nbsp;</td> 
+   <td>11,058.74&nbsp;&nbsp;</td> 
+   <td>14,702.82&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">กำไรต่อหุ้น (บาท)</td> 
+   <td>0.96&nbsp;&nbsp;</td> 
+   <td>1.43&nbsp;&nbsp;</td> 
+   <td>1.50&nbsp;&nbsp;</td> 
+   <td>1.99&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td height="15" style="text-align:left;" colspan="5"><strong>อัตราส่วนทางการเงินที่สำคัญ</strong></td> 
+   <td style="background-color: #EAF0FE;">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">ROA(%)</td> 
+   <td>5.17&nbsp;&nbsp;</td> 
+   <td>6.85&nbsp;&nbsp;</td> 
+   <td>6.51&nbsp;&nbsp;</td> 
+   <td>7.15&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">ROE(%)</td> 
+   <td>6.59&nbsp;&nbsp;</td> 
+   <td>9.29&nbsp;&nbsp;</td> 
+   <td>9.46&nbsp;&nbsp;</td> 
+   <td>11.76&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">อัตรากำไรสุทธิ(%)</td> 
+   <td>1.75&nbsp;&nbsp;</td> 
+   <td>2.41&nbsp;&nbsp;</td> 
+   <td>2.52&nbsp;&nbsp;</td> 
+   <td>3.08&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">&nbsp;&nbsp;</td> 
+  </tr> 
+ </tbody>
+ <thead> 
+  <tr align="center" valign="middle"> 
+   <th height="30"><strong>ค่าสถิติสำคัญ<br> ณ วันที่</strong></th> 
+   <th><strong>27/12/2556</strong></th> 
+   <th><strong>30/12/2557</strong></th> 
+   <th><strong>30/12/2558</strong></th> 
+   <th><strong>30/12/2559</strong></th> 
+   <th><strong>24/03/2560</strong></th> 
+  </tr> 
+ </thead> 
+ <tbody>
+  <tr> 
+   <td style="text-align:left;" height="15">ราคาล่าสุด(บาท)</td> 
+   <td>32.00&nbsp;&nbsp;</td> 
+   <td>27.25&nbsp;&nbsp;</td> 
+   <td>18.30&nbsp;&nbsp;</td> 
+   <td>29.50&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">29.75&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">มูลค่าหลักทรัพย์ตามราคาตลาด</td> 
+   <td>247,774.14&nbsp;&nbsp;</td> 
+   <td>210,995.17&nbsp;&nbsp;</td> 
+   <td>141,695.84&nbsp;&nbsp;</td> 
+   <td>228,416.79&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">230,352.52&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr align="center" valign="middle"> 
+   <td class="topicbg" style="text-align:left;">วันที่ของงบการเงินที่ใช้คำนวณค่าสถิติ</td> 
+   <td>30/09/2556&nbsp;&nbsp;</td> 
+   <td>30/09/2557&nbsp;&nbsp;</td> 
+   <td>30/09/2558&nbsp;&nbsp;</td> 
+   <td>30/09/2559&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">31/12/2559&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">P/E (เท่า)</td> 
+   <td>44.66&nbsp;&nbsp;</td> 
+   <td>18.33&nbsp;&nbsp;</td> 
+   <td>13.73&nbsp;&nbsp;</td> 
+   <td>15.74&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">15.67&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">P/BV (เท่า)</td> 
+   <td>2.33&nbsp;&nbsp;</td> 
+   <td>1.77&nbsp;&nbsp;</td> 
+   <td>1.17&nbsp;&nbsp;</td> 
+   <td>1.84&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">1.71&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">มูลค่าหุ้นทางบัญชีต่อหุ้น (บาท)</td> 
+   <td>13.76&nbsp;&nbsp;</td> 
+   <td>15.37&nbsp;&nbsp;</td> 
+   <td>15.64&nbsp;&nbsp;</td> 
+   <td>15.99&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">17.41&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">อัตราส่วนเงินปันผลตอบแทน(%)</td> 
+   <td>3.44&nbsp;&nbsp;</td> 
+   <td>1.83&nbsp;&nbsp;</td> 
+   <td>4.10&nbsp;&nbsp;</td> 
+   <td>2.54&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">3.19&nbsp;&nbsp;</td> 
+  </tr> 
+ </tbody> 
+</table> 
+<div class="remark-content"> 
+ <strong>หมายเหตุ</strong>
+ <br> &nbsp;•&nbsp;&nbsp;ตลาดหลักทรัพย์ฯ แสดงข้อมูลงบการเงินล่าสุดตามที่บริษัทจดทะเบียนนำส่ง โดยข้อมูลนี้ขึ้นอยู่กับวันปิดรอบบัญชีของบริษัท โดยที่บางบริษัทอาจจะมีวันปิดรอบบัญชีที่มิใช่วันที่ 31 ธันวาคม (31/12) หรือบางบริษัทข้อมูลมิใช่ 12 เดือน ผู้ใช้ควรศึกษารายละเอียดเพิ่มเติมจากงบการเงินฉบับเต็มประกอบ
+ <br> &nbsp;•&nbsp;&nbsp;ข้อมูลงบการเงิน เป็นข้อมูลตามที่บริษัทจดทะเบียนนำส่ง ณ งวดนั้นๆ ผู้ใช้ข้อมูลควรศึกษารายละเอียดเพิ่มเติมจากงบการเงินฉบับเต็มประกอบ ซึ่งมีบางบริษัทอาจมีการปรับปรุงงบที่แสดงเปรียบเทียบในงบฉบับเต็มงวดล่าสุด
+ <br> &nbsp;•&nbsp;&nbsp;ในกรณีของบริษัทจดทะเบียนต่างประเทศ (Secondary Listing) ค่าสถิติ P/E P/BV และ Dividend Yield คำนวณโดยใช้อัตราแลกเปลี่ยนของธนาคารแห่งประเทศไทย เพื่อการประมาณการเปรียบเทียบเท่านั้น
+ <br> &nbsp;•&nbsp;&nbsp;ในกรณีของบริษัทจดทะเบียนต่างประเทศ (Secondary Listing) ข้อมูลงบการเงินเป็นไปตามเกณฑ์ของตลาดหลักทรัพย์หลัก (Home exchange)
+ <br> 
+</div>
