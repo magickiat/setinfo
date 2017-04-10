@@ -15,7 +15,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.magicalcyber.setinfo.reader.DbUtil;
+import com.magicalcyber.setinfo.util.DbUtil;
 
 public class PosibleDeListCompanyService {
 

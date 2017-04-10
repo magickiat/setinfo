@@ -3,7 +3,7 @@ package com.magicalcyber.setinfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.magicalcyber.setinfo.reader.Company;
+import com.magicalcyber.setinfo.bean.Company;
 import com.magicalcyber.setinfo.reader.FinanceReader;
 import com.magicalcyber.setinfo.reader.FinanceRetriever;
 

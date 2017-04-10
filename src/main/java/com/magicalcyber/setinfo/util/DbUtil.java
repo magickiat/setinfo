@@ -1,4 +1,4 @@
-package com.magicalcyber.setinfo.reader;
+package com.magicalcyber.setinfo.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,6 +9,9 @@ import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.magicalcyber.setinfo.bean.Company;
+import com.magicalcyber.setinfo.bean.Finance;
 
 public class DbUtil {
 
@@ -24,7 +27,8 @@ public class DbUtil {
 	}
 
 	public Connection createConnection() throws Exception {
-		return DriverManager.getConnection("jdbc:mysql://localhost/setinfo?useSSL=false", "root", "P@ssw0rd");
+//		return DriverManager.getConnection("jdbc:mysql://localhost/setinfo?useSSL=false", "root", "P@ssw0rd");
+		return DriverManager.getConnection("jdbc:mysql://localhost/setinfo?useSSL=false", "root", "root");
 	}
 
 	public void saveCompanyFinance(List<Company> companies) throws Exception {
