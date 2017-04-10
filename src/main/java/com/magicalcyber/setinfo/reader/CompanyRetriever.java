@@ -9,10 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
@@ -22,8 +21,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.magicalcyber.setinfo.bean.Company;
+import com.magicalcyber.setinfo.bean.Finance;
 import com.magicalcyber.setinfo.bean.FinanceStat;
-import com.magicalcyber.setinfo.service.CompanyService;
 import com.magicalcyber.setinfo.util.DbUtil;
 
 public class CompanyRetriever {
@@ -40,16 +39,14 @@ public class CompanyRetriever {
 
 	public static void main(String[] args) throws Exception {
 
-		// ArrayList<Company> companyList = new CompanyRetriever().retrieve();
-		CompanyService service = new CompanyService();
-		List<Company> allCompany = service.listAllCompany();
-		if (allCompany.size() > 0) {
-			saveCompanyFinance(allCompany);
+		ArrayList<Company> companyList = new CompanyRetriever().retrieve();
+		if (companyList.size() > 0) {
+			saveCompanyFinance(companyList);
 		}
 
 	}
 
-	private static void saveCompanyFinance(List<Company> companyList) throws SQLException, Exception {
+	private static void saveCompanyFinance(ArrayList<Company> companyList) throws SQLException, Exception {
 
 		PrintWriter writer = new PrintWriter(new FileOutputStream(new File("log", "error.txt")), true);
 
@@ -58,11 +55,7 @@ public class CompanyRetriever {
 			FinanceReader reader = new FinanceReader();
 			FinanceRetriever retriever = new FinanceRetriever();
 
-			// clear old data
-			connection.createStatement().executeUpdate("truncate table finance_stat");
-			// connection.createStatement().executeUpdate("truncate table
-			// finance");
-
+			
 			for (Company company : companyList) {
 				log.info("---> finance: " + company.getSymbol());
 
@@ -71,65 +64,53 @@ public class CompanyRetriever {
 				try {
 					Company companyFinance = reader.extract(data);
 
-					// // save finance
-					// HashMap<Integer, Finance> finances =
-					// companyFinance.getFinances();
-					// if (!finances.isEmpty()) {
-					// PreparedStatement pstmt = connection.prepareStatement(
-					// "insert into finance(symbol, year, liabilities, equity,
-					// paid_up_capital, revenue, net_profit, esp_baht, roa, roe,
-					// net_profit_margin) "
-					// + "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+					// save finance
+					HashMap<Integer, Finance> finances = companyFinance.getFinances();
+					if (!finances.isEmpty()) {
+						PreparedStatement pstmt = connection.prepareStatement(
+								"insert into finance(symbol, year, liabilities, equity, paid_up_capital, revenue, net_profit, esp_baht, roa, roe, net_profit_margin) "
+										+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+						// clear old data
+						connection.createStatement().executeUpdate("truncate table finance");
+						
+						Set<Entry<Integer, Finance>> entrySet = finances.entrySet();
+						for (Entry<Integer, Finance> entry : entrySet) {
+							Finance finance = entry.getValue();
 
-					//
-					// Set<Entry<Integer, Finance>> entrySet =
-					// finances.entrySet();
-					// for (Entry<Integer, Finance> entry : entrySet) {
-					// Finance finance = entry.getValue();
-					//
-					// pstmt.setString(1, company.getSymbol());
-					// pstmt.setInt(2, finance.getYear());
-					// pstmt.setBigDecimal(3, finance.getLiabilities());
-					// pstmt.setBigDecimal(4, finance.getEquity());
-					// pstmt.setBigDecimal(5, finance.getPaidUpCapital());
-					// pstmt.setBigDecimal(6, finance.getRevenue());
-					// pstmt.setBigDecimal(7, finance.getNetProfit());
-					// pstmt.setBigDecimal(8, finance.getEspBath());
-					// pstmt.setBigDecimal(9, finance.getRoa());
-					// pstmt.setBigDecimal(10, finance.getRoe());
-					// pstmt.setBigDecimal(11, finance.getNetProfitMargin());
-					// pstmt.executeUpdate();
-					// }
-					//
-					// }
+							pstmt.setString(1, company.getSymbol());
+							pstmt.setInt(2, finance.getYear());
+							pstmt.setBigDecimal(3, finance.getLiabilities());
+							pstmt.setBigDecimal(4, finance.getEquity());
+							pstmt.setBigDecimal(5, finance.getPaidUpCapital());
+							pstmt.setBigDecimal(6, finance.getRevenue());
+							pstmt.setBigDecimal(7, finance.getNetProfit());
+							pstmt.setBigDecimal(8, finance.getEspBath());
+							pstmt.setBigDecimal(9, finance.getRoa());
+							pstmt.setBigDecimal(10, finance.getRoe());
+							pstmt.setBigDecimal(11, finance.getNetProfitMargin());
+							pstmt.executeUpdate();
+						}
+
+					}
 
 					// save finance stat
 					HashMap<Integer, FinanceStat> financeStats = companyFinance.getFinanceStats();
 					if (!financeStats.isEmpty()) {
 						PreparedStatement pstmt = connection.prepareStatement(
 								"insert into finance_stat(symbol, year, stat_date, last_price, market_cap, fs_period_as_of, pe, pbv, book_value_per_share, dvd_yield_percent) "
-										+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+										+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+						// clear old data
+						connection.createStatement().executeUpdate("truncate table finance_stat");
+						
 						Set<Entry<Integer, FinanceStat>> entrySet = financeStats.entrySet();
 						for (Entry<Integer, FinanceStat> entry : entrySet) {
 							FinanceStat financeStat = entry.getValue();
 							pstmt.setString(1, company.getSymbol());
 							pstmt.setInt(2, entry.getKey());
-
-							if (financeStat.getStatDate() != null) {
-								pstmt.setDate(3, new java.sql.Date(financeStat.getStatDate().getTime()));
-							} else {
-								pstmt.setDate(3, null);
-							}
-
+							pstmt.setDate(3, new java.sql.Date(financeStat.getStatDate().getTime()));
 							pstmt.setBigDecimal(4, financeStat.getLastPrice());
 							pstmt.setBigDecimal(5, financeStat.getMarketCap());
-
-							if (financeStat.getFsPeriodAsOf() != null) {
-								pstmt.setDate(6, new java.sql.Date(financeStat.getFsPeriodAsOf().getTime()));
-							} else {
-								pstmt.setDate(6, null);
-							}
-
+							pstmt.setDate(6, new java.sql.Date(financeStat.getFsPeriodAsOf().getTime()));
 							pstmt.setBigDecimal(7, financeStat.getPe());
 							pstmt.setBigDecimal(8, financeStat.getPbv());
 							pstmt.setBigDecimal(9, financeStat.getBookValuePerShare());
@@ -139,7 +120,6 @@ public class CompanyRetriever {
 
 					}
 				} catch (Exception ex) {
-					ex.printStackTrace();
 					log.error("company error: " + company.getSymbol() + "\t" + ex.getMessage());
 					writer.println(company.getSymbol() + "\t" + ex.getMessage());
 				}

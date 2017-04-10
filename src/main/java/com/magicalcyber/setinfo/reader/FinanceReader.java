@@ -57,7 +57,7 @@ public class FinanceReader {
 
 		Elements table = document.select("table");
 
-//		setFinance(company, table);
+		setFinance(company, table);
 		setFinanceStat(company, table);
 
 		return company;
@@ -73,9 +73,6 @@ public class FinanceReader {
 		for (int index = 1; index < rowHead.size(); index++) {
 			FinanceStat stat = new FinanceStat();
 			String strDate = DataUtil.cleanHtmlData(rowHead.get(index).text());
-			if(strDate.length() < 10){
-				continue;
-			}
 			Date statDate = DateUtil.sdf.parse(strDate);
 			stat.setStatDate(statDate);
 			financeStat.put(index, stat);
@@ -99,10 +96,7 @@ public class FinanceReader {
 				case 2:
 					// log.info("last price: " + value);
 					String strData = DataUtil.cleanHtmlData(data.get(dataIndex).text());
-					if(strData.length() >= 10){
-						financeStat.get(dataIndex).setFsPeriodAsOf(DateUtil.sdf.parse(strData));
-					}
-					
+					financeStat.get(dataIndex).setFsPeriodAsOf(DateUtil.sdf.parse(strData));
 					break;
 				case 3:
 					financeStat.get(dataIndex).setPe(getData(data, dataIndex));
@@ -146,7 +140,7 @@ public class FinanceReader {
 				String data = DataUtil.cleanHtmlData(element.text());
 
 				if (data.length() < 4) {
-					log.warn("Not found finance year for company: " + element.html());
+					log.warn("Not found finance year for company: " + data);
 					continue;
 				}
 
