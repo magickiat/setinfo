@@ -1,9 +1,9 @@
-package com.magicalcyber.setinfo.reader;
+package com.magicalcyber.setinfo.bean;
 
 import java.math.BigDecimal;
 
 public class Finance {
-
+	private String symbol;
 	private Integer year;
 	private BigDecimal assets;
 	private BigDecimal liabilities;
@@ -16,6 +16,14 @@ public class Finance {
 	private BigDecimal roa;
 	private BigDecimal roe;
 	private BigDecimal netProfitMargin;
+
+	public String getSymbol() {
+		return symbol;
+	}
+
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
 
 	public Integer getYear() {
 		return year;

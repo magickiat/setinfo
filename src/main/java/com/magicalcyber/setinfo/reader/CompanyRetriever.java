@@ -20,6 +20,11 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.magicalcyber.setinfo.bean.Company;
+import com.magicalcyber.setinfo.bean.Finance;
+import com.magicalcyber.setinfo.bean.FinanceStat;
+import com.magicalcyber.setinfo.util.DbUtil;
+
 public class CompanyRetriever {
 
 	private static final int INDEX_SYMBOL = 0;
@@ -47,23 +52,27 @@ public class CompanyRetriever {
 
 		try (Connection connection = db.createConnection()) {
 
-			PreparedStatement pstmt = connection.prepareStatement(
-					"insert into finance(symbol, year, liabilities, equity, paid_up_capital, revenue, net_profit, esp_baht, roa, roe, net_profit_margin) "
-							+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
 			FinanceReader reader = new FinanceReader();
 			FinanceRetriever retriever = new FinanceRetriever();
 
-			// clear old data
-			connection.createStatement().executeUpdate("truncate table finance");
+			
 			for (Company company : companyList) {
 				log.info("---> finance: " + company.getSymbol());
 
 				String data = retriever.retrieve(company.getSymbol());
 
 				try {
-					HashMap<Integer, Finance> finances = reader.extract(data).getFinances();
+					Company companyFinance = reader.extract(data);
+
+					// save finance
+					HashMap<Integer, Finance> finances = companyFinance.getFinances();
 					if (!finances.isEmpty()) {
+						PreparedStatement pstmt = connection.prepareStatement(
+								"insert into finance(symbol, year, liabilities, equity, paid_up_capital, revenue, net_profit, esp_baht, roa, roe, net_profit_margin) "
+										+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+						// clear old data
+						connection.createStatement().executeUpdate("truncate table finance");
+						
 						Set<Entry<Integer, Finance>> entrySet = finances.entrySet();
 						for (Entry<Integer, Finance> entry : entrySet) {
 							Finance finance = entry.getValue();
@@ -79,6 +88,33 @@ public class CompanyRetriever {
 							pstmt.setBigDecimal(9, finance.getRoa());
 							pstmt.setBigDecimal(10, finance.getRoe());
 							pstmt.setBigDecimal(11, finance.getNetProfitMargin());
+							pstmt.executeUpdate();
+						}
+
+					}
+
+					// save finance stat
+					HashMap<Integer, FinanceStat> financeStats = companyFinance.getFinanceStats();
+					if (!financeStats.isEmpty()) {
+						PreparedStatement pstmt = connection.prepareStatement(
+								"insert into finance_stat(symbol, year, stat_date, last_price, market_cap, fs_period_as_of, pe, pbv, book_value_per_share, dvd_yield_percent) "
+										+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+						// clear old data
+						connection.createStatement().executeUpdate("truncate table finance_stat");
+						
+						Set<Entry<Integer, FinanceStat>> entrySet = financeStats.entrySet();
+						for (Entry<Integer, FinanceStat> entry : entrySet) {
+							FinanceStat financeStat = entry.getValue();
+							pstmt.setString(1, company.getSymbol());
+							pstmt.setInt(2, entry.getKey());
+							pstmt.setDate(3, new java.sql.Date(financeStat.getStatDate().getTime()));
+							pstmt.setBigDecimal(4, financeStat.getLastPrice());
+							pstmt.setBigDecimal(5, financeStat.getMarketCap());
+							pstmt.setDate(6, new java.sql.Date(financeStat.getFsPeriodAsOf().getTime()));
+							pstmt.setBigDecimal(7, financeStat.getPe());
+							pstmt.setBigDecimal(8, financeStat.getPbv());
+							pstmt.setBigDecimal(9, financeStat.getBookValuePerShare());
+							pstmt.setBigDecimal(10, financeStat.getDvdYieldPercent());
 							pstmt.executeUpdate();
 						}
 

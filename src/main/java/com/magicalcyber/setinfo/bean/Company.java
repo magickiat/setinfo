@@ -1,4 +1,4 @@
-package com.magicalcyber.setinfo.reader;
+package com.magicalcyber.setinfo.bean;
 
 import java.util.HashMap;
 
@@ -8,6 +8,8 @@ public class Company {
 	private String market;
 	private String industry;
 	private String sector;
+	private HashMap<Integer, Finance> finances;
+	private HashMap<Integer, FinanceStat> financeStats;
 
 	public Company() {
 	}
@@ -19,8 +21,6 @@ public class Company {
 		this.industry = industry;
 		this.sector = sector;
 	}
-
-	private HashMap<Integer, Finance> finances;
 
 	public String getSymbol() {
 		return symbol;
@@ -68,6 +68,14 @@ public class Company {
 
 	public void setMarket(String market) {
 		this.market = market;
+	}
+
+	public HashMap<Integer, FinanceStat> getFinanceStats() {
+		return financeStats;
+	}
+
+	public void setFinanceStats(HashMap<Integer, FinanceStat> financeStats) {
+		this.financeStats = financeStats;
 	}
 
 	@Override
