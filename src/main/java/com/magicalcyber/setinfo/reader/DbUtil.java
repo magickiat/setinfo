@@ -1,62 +1,63 @@
 package com.magicalcyber.setinfo.reader;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.bson.BsonArray;
-import org.bson.BsonDocument;
-import org.bson.BsonString;
-import org.bson.Document;
-
-import com.mongodb.BasicDBObject;
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DbUtil {
 
-	public static final String DB_NAME = "setinfo";
+	private static final Logger log = LoggerFactory.getLogger(DbUtil.class);
 
-	public void saveCompanyFinance(List<Company> companies) {
-
-		MongoClient mongoClient = new MongoClient();
+	public DbUtil() {
 		try {
-			MongoDatabase database = mongoClient.getDatabase(DB_NAME);
-			MongoCollection<BsonDocument> collection = database.getCollection(Company.class.getSimpleName(), BsonDocument.class);
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			log.error(e.getMessage(), e);
+			throw new IllegalArgumentException("Driver mysql not found");
+		}
+	}
 
-			// clear collection
-			collection.drop();
-			database.createCollection(Company.class.getSimpleName());
+	public Connection createConnection() throws Exception {
+		return DriverManager.getConnection("jdbc:mysql://localhost/setinfo?useSSL=false", "root", "P@ssw0rd");
+	}
 
-			// insert
+	public void saveCompanyFinance(List<Company> companies) throws Exception {
+		Connection connection = createConnection();
+		try {
+
+			PreparedStatement pstmt = connection
+					.prepareStatement("insert into finance(symbol, year, assets) values(?, ?, ?)");
+
+			PreparedStatement pstmtDel = connection.prepareStatement("delete from finance where symbol = ?");
+
 			for (Company company : companies) {
-				BsonDocument docCompany = new BsonDocument().append("symbol", new BsonString(company.getSymbol()))
-						.append("name", new BsonString(company.getName()));
 
-				HashMap<Integer, Finance> finances = company.getFinances();
-				List<BasicDBObject> financeList = new ArrayList<>();
-				Set<Entry<Integer, Finance>> entrySet = finances.entrySet();
+				// clear data
+				pstmtDel.setString(1, company.getSymbol());
+				pstmtDel.executeUpdate();
+
+				// insert new data
+				pstmt.setString(1, company.getSymbol());
+				Set<Entry<Integer, Finance>> entrySet = company.getFinances().entrySet();
 				for (Entry<Integer, Finance> entry : entrySet) {
-					Finance value = entry.getValue();
-					BsonDocument finance = new BsonDocument()
-							.append("assets", new BsonString(value.getAssets().toPlainString()))
-							.append("liabilities", new BsonString(value.getLiabilities().toPlainString()));
-
-					financeList.add(new BasicDBObject);
+					Finance finance = entry.getValue();
+					pstmt.setInt(2, finance.getYear());
+					pstmt.setBigDecimal(3, finance.getAssets());
+					pstmt.executeUpdate();
 				}
 
-				docCompany.put("finances", new BsonArray(financeList));
-				collection.insertMany(financeList);
-				
 			}
-
 		} finally {
-			mongoClient.close();
+			if (connection != null) {
+				connection.close();
+			}
 		}
-
 	}
 
 }
