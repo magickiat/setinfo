@@ -1,0 +1,173 @@
+<table class="table table-hover table-info"> 
+ <caption> 
+  <span style="float: right;">(หน่วย: ล้านบาท)</span> 
+ </caption> 
+ <thead> 
+  <tr align="center" valign="middle"> 
+   <th height="30"><strong>งวดงบการเงิน<br> ณ วันที่</strong></th> 
+   <th><strong>งบปี&nbsp;56<br>31/05/2556</strong></th> 
+   <th><strong>งบปี&nbsp;57<br>31/05/2557</strong></th> 
+   <th><strong>งบปี&nbsp;58<br>31/05/2558</strong></th> 
+   <th><strong>งบปี&nbsp;59<br>31/05/2559</strong></th> 
+   <th><strong>ไตรมาส2/60<br>30/11/2559</strong></th> 
+  </tr> 
+ </thead> 
+ <tbody> 
+  <tr> 
+   <td height="15" style="text-align:left;" colspan="5"><strong>บัญชีทางการเงินที่สำคัญ</strong></td> 
+   <td style="background-color: #EAF0FE;">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td height="15" style="text-align:left;" valign="middle">สินทรัพย์รวม</td> 
+   <td>50.30&nbsp;&nbsp;</td> 
+   <td>1,636.25&nbsp;&nbsp;</td> 
+   <td>2,142.40&nbsp;&nbsp;</td> 
+   <td>2,455.06&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">2,792.19&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td height="15" style="text-align:left;">หนี้สินรวม</td> 
+   <td>60.33&nbsp;&nbsp;</td> 
+   <td>807.43&nbsp;&nbsp;</td> 
+   <td>1,177.00&nbsp;&nbsp;</td> 
+   <td>1,058.76&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">1,274.28&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td height="15" style="text-align:left;">ส่วนของผู้ถือหุ้น</td> 
+   <td>-10.03&nbsp;&nbsp;</td> 
+   <td>1,046.88&nbsp;&nbsp;</td> 
+   <td>958.28&nbsp;&nbsp;</td> 
+   <td>1,356.08&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">1,477.39&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td height="15" style="text-align:left;">มูลค่าหุ้นที่เรียกชำระแล้ว</td> 
+   <td>166.50&nbsp;&nbsp;</td> 
+   <td>3,466.60&nbsp;&nbsp;</td> 
+   <td>3,466.96&nbsp;&nbsp;</td> 
+   <td>3,467.17&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">3,467.17&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">รายได้รวม</td> 
+   <td>411.32&nbsp;&nbsp;</td> 
+   <td>657.87&nbsp;&nbsp;</td> 
+   <td>758.63&nbsp;&nbsp;</td> 
+   <td>1,226.00&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">416.84&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">กำไรสุทธิ</td> 
+   <td>236.93&nbsp;&nbsp;</td> 
+   <td>222.78&nbsp;&nbsp;</td> 
+   <td>318.38&nbsp;&nbsp;</td> 
+   <td>397.58&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">121.31&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">กำไรต่อหุ้น (บาท)</td> 
+   <td>14.23&nbsp;&nbsp;</td> 
+   <td>0.01&nbsp;&nbsp;</td> 
+   <td>0.01&nbsp;&nbsp;</td> 
+   <td>0.06&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">0.02&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td height="15" style="text-align:left;" colspan="5"><strong>อัตราส่วนทางการเงินที่สำคัญ</strong></td> 
+   <td style="background-color: #EAF0FE;">&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">ROA(%)</td> 
+   <td>493.83&nbsp;&nbsp;</td> 
+   <td>22.85&nbsp;&nbsp;</td> 
+   <td>19.03&nbsp;&nbsp;</td> 
+   <td>20.61&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">13.37&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">ROE(%)</td> 
+   <td>N.A.&nbsp;&nbsp;</td> 
+   <td>42.97&nbsp;&nbsp;</td> 
+   <td>31.76&nbsp;&nbsp;</td> 
+   <td>34.36&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">23.64&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">อัตรากำไรสุทธิ(%)</td> 
+   <td>57.60&nbsp;&nbsp;</td> 
+   <td>33.86&nbsp;&nbsp;</td> 
+   <td>41.97&nbsp;&nbsp;</td> 
+   <td>32.43&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">29.10&nbsp;&nbsp;</td> 
+  </tr> 
+ </tbody>
+ <thead> 
+  <tr align="center" valign="middle"> 
+   <th height="30"><strong>ค่าสถิติสำคัญ<br> ณ วันที่</strong></th> 
+   <th><strong>27/12/2556</strong></th> 
+   <th><strong>30/12/2557</strong></th> 
+   <th><strong>30/12/2558</strong></th> 
+   <th><strong>30/12/2559</strong></th> 
+   <th><strong>07/04/2560</strong></th> 
+  </tr> 
+ </thead> 
+ <tbody>
+  <tr> 
+   <td style="text-align:left;" height="15">ราคาล่าสุด(บาท)</td> 
+   <td>2.10&nbsp;&nbsp;</td> 
+   <td>2.10&nbsp;&nbsp;</td> 
+   <td>2.10&nbsp;&nbsp;</td> 
+   <td>2.10&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">2.10&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">มูลค่าหลักทรัพย์ตามราคาตลาด</td> 
+   <td>31.50&nbsp;&nbsp;</td> 
+   <td>31.50&nbsp;&nbsp;</td> 
+   <td>-&nbsp;&nbsp;</td> 
+   <td>-&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">-&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr align="center" valign="middle"> 
+   <td class="topicbg" style="text-align:left;">วันที่ของงบการเงินที่ใช้คำนวณค่าสถิติ</td> 
+   <td>31/08/2556&nbsp;&nbsp;</td> 
+   <td>31/05/2557&nbsp;&nbsp;</td> 
+   <td>31/08/2558&nbsp;&nbsp;</td> 
+   <td>31/08/2559&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">30/11/2559&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">P/E (เท่า)</td> 
+   <td>0.07&nbsp;&nbsp;</td> 
+   <td>0.14&nbsp;&nbsp;</td> 
+   <td>-&nbsp;&nbsp;</td> 
+   <td>-&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">-&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">P/BV (เท่า)</td> 
+   <td>0.04&nbsp;&nbsp;</td> 
+   <td>0.03&nbsp;&nbsp;</td> 
+   <td>-&nbsp;&nbsp;</td> 
+   <td>-&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">-&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">มูลค่าหุ้นทางบัญชีต่อหุ้น (บาท)</td> 
+   <td>0.25&nbsp;&nbsp;</td> 
+   <td>0.03&nbsp;&nbsp;</td> 
+   <td>0.03&nbsp;&nbsp;</td> 
+   <td>0.21&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">0.21&nbsp;&nbsp;</td> 
+  </tr> 
+  <tr> 
+   <td style="text-align:left;" height="15">อัตราส่วนเงินปันผลตอบแทน(%)</td> 
+   <td>N/A&nbsp;&nbsp;</td> 
+   <td>N/A&nbsp;&nbsp;</td> 
+   <td>-&nbsp;&nbsp;</td> 
+   <td>-&nbsp;&nbsp;</td> 
+   <td style="background-color: #EAF0FE;">-&nbsp;&nbsp;</td> 
+  </tr> 
+ </tbody> 
+</table> 
