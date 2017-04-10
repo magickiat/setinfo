@@ -17,9 +17,9 @@ import org.slf4j.LoggerFactory;
 
 import com.magicalcyber.setinfo.reader.DbUtil;
 
-public class PosibleDeListCompany {
+public class PosibleDeListCompanyService {
 
-	private static final Logger log = LoggerFactory.getLogger(PosibleDeListCompany.class);
+	private static final Logger log = LoggerFactory.getLogger(PosibleDeListCompanyService.class);
 
 	public static void main(String[] args) throws Exception {
 		File input = new File("input", "de-list-company.xls");
