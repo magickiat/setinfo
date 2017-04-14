@@ -96,7 +96,15 @@ public class FinanceReader {
 				case 2:
 					// log.info("last price: " + value);
 					String strData = DataUtil.cleanHtmlData(data.get(dataIndex).text());
-					financeStat.get(dataIndex).setFsPeriodAsOf(DateUtil.sdf.parse(strData));
+					if (strData != null && strData.trim().length() > 4) {
+						try {
+							Date date = DateUtil.sdf.parse(strData);
+							financeStat.get(dataIndex).setFsPeriodAsOf(date);
+						} catch (Exception e) {
+							log.warn("skip fs_period because: " + e.getMessage());
+						}
+					}
+
 					break;
 				case 3:
 					financeStat.get(dataIndex).setPe(getData(data, dataIndex));
@@ -165,48 +173,52 @@ public class FinanceReader {
 
 				for (int valueIndex = 1; valueIndex < dataList.size() - 1; valueIndex++) {
 					BigDecimal value = getData(dataList, valueIndex);
+					Finance finance = finances.get(valueIndex);
 
-					switch (dataIndex) {
-					case INDEX_ASSETS:
-						finances.get(valueIndex).setAssets(value);
-						break;
+					if (finance != null) {
+						switch (dataIndex) {
+						case INDEX_ASSETS:
+							finance.setAssets(value);
+							break;
 
-					case INDEX_LIABILITIES:
-						finances.get(valueIndex).setLiabilities(value);
-						break;
+						case INDEX_LIABILITIES:
+							finance.setLiabilities(value);
+							break;
 
-					case INDEX_EQUITY:
-						finances.get(valueIndex).setEquity(value);
-						break;
+						case INDEX_EQUITY:
 
-					case INDEX_PAID_UP_CAPITAL:
-						finances.get(valueIndex).setPaidUpCapital(value);
-						break;
+							finance.setEquity(value);
+							break;
 
-					case INDEX_REVENUE:
-						finances.get(valueIndex).setRevenue(value);
-						break;
+						case INDEX_PAID_UP_CAPITAL:
+							finance.setPaidUpCapital(value);
+							break;
 
-					case INDEX_NET_PROFIT:
-						finances.get(valueIndex).setNetProfit(value);
-						break;
+						case INDEX_REVENUE:
+							finance.setRevenue(value);
+							break;
 
-					case INDEX_EPS_BAHT:
-						finances.get(valueIndex).setEspBath(value);
-						break;
+						case INDEX_NET_PROFIT:
+							finance.setNetProfit(value);
+							break;
 
-					case INDEX_ROA:
-						finances.get(valueIndex).setRoa(value);
-						break;
+						case INDEX_EPS_BAHT:
+							finance.setEspBath(value);
+							break;
 
-					case INDEX_ROE:
-						finances.get(valueIndex).setRoe(value);
-						break;
+						case INDEX_ROA:
+							finance.setRoa(value);
+							break;
 
-					case INDEX_NET_PROFIT_MARGIN:
-						finances.get(valueIndex).setNetProfitMargin(value);
-						break;
+						case INDEX_ROE:
+							finance.setRoe(value);
+							break;
 
+						case INDEX_NET_PROFIT_MARGIN:
+							finance.setNetProfitMargin(value);
+							break;
+
+						}
 					}
 
 				}

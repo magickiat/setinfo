@@ -30,6 +30,7 @@ public class FinanceReaderTest {
 		assertEquals(new BigDecimal("2.33"), company.getFinanceStats().get(2556).getPbv());
 		assertEquals(new BigDecimal("13.76"), company.getFinanceStats().get(2556).getBookValuePerShare());
 		assertEquals(new BigDecimal("3.44"), company.getFinanceStats().get(2556).getDvdYieldPercent());
+		
 	}
 
 	@Test
@@ -39,5 +40,19 @@ public class FinanceReaderTest {
 
 		assertEquals(4, company.getFinances().size());
 		assertEquals(null, company.getFinances().get(2556).getRoe());
+	}
+	
+	@Test
+	public void testFinance_DTAC_mustHaveFour() throws Exception {
+		String symbol = "DTAC";
+		FinanceRetriever ret = new FinanceRetriever();
+		String data = ret.retrieve(symbol);
+		System.out.println(data);
+		
+		FinanceReader reader = new FinanceReader();
+		Company company = reader.extract(data);
+
+		assertEquals(4, company.getFinances().size());
+//		assertEquals(null, company.getFinances().get(2556).getRoe());
 	}
 }
