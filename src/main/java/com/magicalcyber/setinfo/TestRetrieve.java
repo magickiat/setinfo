@@ -7,13 +7,14 @@ import com.magicalcyber.setinfo.reader.FinanceRetriever;
 public class TestRetrieve {
 
 	public static void main(String[] args) throws Exception {
-		String symbol = "L%26E";
-		FinanceRetriever ret = new FinanceRetriever();
-		String data = ret.retrieve(symbol);
-		System.out.println(data);
-		
-		FinanceReader reader = new FinanceReader();
-		Company company = reader.extract(data);
+//		String symbol = "L&E";
+//		FinanceRetriever ret = new FinanceRetriever();
+//		String data = ret.retrieve(symbol);
+//		System.out.println(data);
+//		
+//		FinanceReader reader = new FinanceReader();
+//		Company company = reader.extract(data);
+		//แก้เรื่อง data ของ L &E
 		
 	}
 

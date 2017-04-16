@@ -29,6 +29,12 @@ import com.magicalcyber.setinfo.util.DbUtil;
 
 public class CompanyRetriever {
 
+	private static final String INSERT_FINANCE = "insert into finance(symbol, year, assets, liabilities, equity,  paid_up_capital, revenue, net_profit, esp_baht, roa, roe, net_profit_margin) "
+			+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+	private static final String INSERT_FINANCE_STAT = "insert into finance_stat(symbol, year, stat_date, last_price, market_cap, fs_period_as_of, pe, pbv, book_value_per_share, dvd_yield_percent) "
+			+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
 	private static final int INDEX_SYMBOL = 0;
 	private static final int INDEX_NAME = 1;
 	private static final int INDEX_MARKET = 2;
@@ -50,7 +56,7 @@ public class CompanyRetriever {
 
 	}
 
-	private static void saveCompanyFinance(List<Company> companyList) throws SQLException, Exception {
+	public static void saveCompanyFinance(List<Company> companyList) throws SQLException, Exception {
 
 		PrintWriter writer = new PrintWriter(new FileOutputStream(new File("log", "error.txt")), true);
 
@@ -73,30 +79,15 @@ public class CompanyRetriever {
 
 					// // save finance
 					HashMap<Integer, Finance> finances = companyFinance.getFinances();
-					
+
 					if (finances != null && !finances.isEmpty()) {
 
-						PreparedStatement pstmt = connection.prepareStatement(
-								"insert into finance(symbol, year, assets, liabilities, equity,  paid_up_capital, revenue, net_profit, esp_baht, roa, roe, net_profit_margin) "
-										+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+						PreparedStatement pstmt = connection.prepareStatement(INSERT_FINANCE);
 
 						Set<Entry<Integer, Finance>> entrySet = finances.entrySet();
 						for (Entry<Integer, Finance> entry : entrySet) {
 							Finance finance = entry.getValue();
-
-							int index = 1;
-							pstmt.setString(index++, company.getSymbol());
-							pstmt.setInt(index++, finance.getYear());
-							pstmt.setBigDecimal(index++, finance.getAssets());
-							pstmt.setBigDecimal(index++, finance.getLiabilities());
-							pstmt.setBigDecimal(index++, finance.getEquity());
-							pstmt.setBigDecimal(index++, finance.getPaidUpCapital());
-							pstmt.setBigDecimal(index++, finance.getRevenue());
-							pstmt.setBigDecimal(index++, finance.getNetProfit());
-							pstmt.setBigDecimal(index++, finance.getEspBath());
-							pstmt.setBigDecimal(index++, finance.getRoa());
-							pstmt.setBigDecimal(index++, finance.getRoe());
-							pstmt.setBigDecimal(index++, finance.getNetProfitMargin());
+							setDataFinance(company, pstmt, finance);
 							pstmt.executeUpdate();
 						}
 
@@ -105,34 +96,12 @@ public class CompanyRetriever {
 					// save finance stat
 					HashMap<Integer, FinanceStat> financeStats = companyFinance.getFinanceStats();
 					if (financeStats != null && !financeStats.isEmpty()) {
-						PreparedStatement pstmt = connection.prepareStatement(
-								"insert into finance_stat(symbol, year, stat_date, last_price, market_cap, fs_period_as_of, pe, pbv, book_value_per_share, dvd_yield_percent) "
-										+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+						PreparedStatement pstmt = connection.prepareStatement(INSERT_FINANCE_STAT);
 						Set<Entry<Integer, FinanceStat>> entrySet = financeStats.entrySet();
 						for (Entry<Integer, FinanceStat> entry : entrySet) {
 							FinanceStat financeStat = entry.getValue();
-							pstmt.setString(1, company.getSymbol());
-							pstmt.setInt(2, entry.getKey());
-
-							if (financeStat.getStatDate() != null) {
-								pstmt.setDate(3, new java.sql.Date(financeStat.getStatDate().getTime()));
-							} else {
-								pstmt.setDate(3, null);
-							}
-
-							pstmt.setBigDecimal(4, financeStat.getLastPrice());
-							pstmt.setBigDecimal(5, financeStat.getMarketCap());
-
-							if (financeStat.getFsPeriodAsOf() != null) {
-								pstmt.setDate(6, new java.sql.Date(financeStat.getFsPeriodAsOf().getTime()));
-							} else {
-								pstmt.setDate(6, null);
-							}
-
-							pstmt.setBigDecimal(7, financeStat.getPe());
-							pstmt.setBigDecimal(8, financeStat.getPbv());
-							pstmt.setBigDecimal(9, financeStat.getBookValuePerShare());
-							pstmt.setBigDecimal(10, financeStat.getDvdYieldPercent());
+							int year = entry.getKey();
+							setDataFinanceStat(company, pstmt, financeStat, year);
 							pstmt.executeUpdate();
 						}
 
@@ -147,6 +116,49 @@ public class CompanyRetriever {
 		}
 
 		writer.close();
+	}
+
+	private static void setDataFinanceStat(Company company, PreparedStatement pstmt, FinanceStat financeStat, int year)
+			throws SQLException {
+		int count = 1;
+		pstmt.setString(count++, company.getSymbol());
+		pstmt.setInt(count++, year);
+
+		if (financeStat.getStatDate() != null) {
+			pstmt.setDate(count++, new java.sql.Date(financeStat.getStatDate().getTime()));
+		} else {
+			pstmt.setDate(count++, null);
+		}
+
+		pstmt.setBigDecimal(count++, financeStat.getLastPrice());
+		pstmt.setBigDecimal(count++, financeStat.getMarketCap());
+
+		if (financeStat.getFsPeriodAsOf() != null) {
+			pstmt.setDate(count++, new java.sql.Date(financeStat.getFsPeriodAsOf().getTime()));
+		} else {
+			pstmt.setDate(count++, null);
+		}
+
+		pstmt.setBigDecimal(count++, financeStat.getPe());
+		pstmt.setBigDecimal(count++, financeStat.getPbv());
+		pstmt.setBigDecimal(count++, financeStat.getBookValuePerShare());
+		pstmt.setBigDecimal(count++, financeStat.getDvdYieldPercent());
+	}
+
+	private static void setDataFinance(Company company, PreparedStatement pstmt, Finance finance) throws SQLException {
+		int index = 1;
+		pstmt.setString(index++, company.getSymbol());
+		pstmt.setInt(index++, finance.getYear());
+		pstmt.setBigDecimal(index++, finance.getAssets());
+		pstmt.setBigDecimal(index++, finance.getLiabilities());
+		pstmt.setBigDecimal(index++, finance.getEquity());
+		pstmt.setBigDecimal(index++, finance.getPaidUpCapital());
+		pstmt.setBigDecimal(index++, finance.getRevenue());
+		pstmt.setBigDecimal(index++, finance.getNetProfit());
+		pstmt.setBigDecimal(index++, finance.getEspBath());
+		pstmt.setBigDecimal(index++, finance.getRoa());
+		pstmt.setBigDecimal(index++, finance.getRoe());
+		pstmt.setBigDecimal(index++, finance.getNetProfitMargin());
 	}
 
 	public ArrayList<Company> retrieve() throws Exception {
@@ -196,5 +208,31 @@ public class CompanyRetriever {
 		}
 
 		return companyList;
+	}
+
+	public static void updateFinance(Company company) throws Exception {
+		try (Connection connection = db.createConnection()) {
+			// clear old data
+			connection.createStatement().executeUpdate("DELETE FROM finance WHERE symbol = '" + company.getSymbol() + "'");
+			connection.createStatement()
+					.executeUpdate("DELETE FROM finance_stat WHERE symbol = '" + company.getSymbol() + "'");
+
+			// insert new data
+			PreparedStatement pstmtFinance = connection.prepareStatement(INSERT_FINANCE);
+			PreparedStatement pstmtStat = connection.prepareStatement(INSERT_FINANCE_STAT);
+
+			Set<Entry<Integer, Finance>> entrySet = company.getFinances().entrySet();
+			for (Entry<Integer, Finance> entry : entrySet) {
+				setDataFinance(company, pstmtFinance, entry.getValue());
+				pstmtFinance.executeUpdate();
+			}
+
+			Set<Entry<Integer, FinanceStat>> entrySet2 = company.getFinanceStats().entrySet();
+			for (Entry<Integer, FinanceStat> entry : entrySet2) {
+				setDataFinanceStat(company, pstmtStat, entry.getValue(), entry.getKey());
+				pstmtStat.executeUpdate();
+			}
+
+		}
 	}
 }
