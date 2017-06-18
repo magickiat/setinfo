@@ -3,8 +3,6 @@ package com.magicalcyber.setinfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.magicalcyber.setinfo.bean.Company;
-import com.magicalcyber.setinfo.reader.FinanceReader;
 import com.magicalcyber.setinfo.reader.FinanceRetriever;
 
 public class Main {
@@ -21,13 +19,13 @@ public class Main {
 		String symbol = "CPF";
 		FinanceRetriever retriever = new FinanceRetriever();
 		String financeInfo = retriever.retrieve(symbol);
-		// log.info(financeInfo);
+		 log.info(financeInfo);
 		
-		FinanceReader reader = new FinanceReader();
-		Company company = reader.extract(financeInfo);
-		company.setSymbol(symbol);
+//		FinanceReader reader = new FinanceReader();
+//		Company company = reader.extract(financeInfo);
+//		company.setSymbol(symbol);
 		
-		log.info(company.toString());
+//		log.info(company.toString());
 		
 		
 	}

@@ -27,8 +27,8 @@ public class DbUtil {
 	}
 
 	public Connection createConnection() throws Exception {
-//		return DriverManager.getConnection("jdbc:mysql://localhost/setinfo?useSSL=false", "root", "P@ssw0rd");
-		return DriverManager.getConnection("jdbc:mysql://localhost/setinfo?useSSL=false", "root", "root");
+		return DriverManager.getConnection("jdbc:mysql://localhost/setinfo?useSSL=false", "root", "P@ssw0rd");
+//		return DriverManager.getConnection("jdbc:mysql://localhost/setinfo?useSSL=false", "root", "root");
 	}
 
 	public void saveCompanyFinance(List<Company> companies) throws Exception {

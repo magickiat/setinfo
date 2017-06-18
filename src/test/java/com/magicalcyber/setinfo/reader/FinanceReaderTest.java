@@ -1,6 +1,6 @@
 package com.magicalcyber.setinfo.reader;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -17,10 +17,15 @@ public class FinanceReaderTest {
 		FinanceReader reader = new FinanceReader();
 		Company company = reader.read(new File("input", "CPF.txt"));
 
-		assertEquals(4, company.getFinances().size());
+		assertEquals(5, company.getFinances().size());
+		assertTrue(company.getFinances().get(2560).getEquity() != null);
+		System.out.println(company.getFinances().get(2560).getEquity());
+		
 		assertEquals(new BigDecimal("365003.12"), company.getFinances().get(2556).getAssets());
 		assertEquals(new BigDecimal("252797.61"), company.getFinances().get(2557).getLiabilities());
 		assertEquals(new BigDecimal("116364.68"), company.getFinances().get(2558).getEquity());
+		assertEquals(new BigDecimal("133697.68"), company.getFinances().get(2559).getEquity());
+		assertEquals(new BigDecimal("149240.48"), company.getFinances().get(2560).getEquity());
 
 		assertEquals(5, company.getFinanceStats().size());
 		assertEquals(new BigDecimal("32.00"), company.getFinanceStats().get(2556).getLastPrice());
@@ -42,7 +47,7 @@ public class FinanceReaderTest {
 		assertEquals(null, company.getFinances().get(2556).getRoe());
 	}
 	
-	@Test
+	//@Test
 	public void testFinance_DTAC_mustHaveFour() throws Exception {
 		String symbol = "DTAC";
 		FinanceRetriever ret = new FinanceRetriever();

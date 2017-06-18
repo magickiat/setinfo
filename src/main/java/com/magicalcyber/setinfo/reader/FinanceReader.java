@@ -42,8 +42,8 @@ public class FinanceReader {
 		// String url =
 		// "https://www.set.or.th/set/companyhighlight.do?symbol=PB&ssoPageId=5&language=th&country=TH";
 
-		FinanceReader reader = new FinanceReader();
-		reader.read(new File("input", "CPF.txt"));
+		//FinanceReader reader = new FinanceReader();
+		//reader.read(new File("input", "CPF.txt"));
 	}
 
 	private static final Logger log = LoggerFactory.getLogger(FinanceReader.class);
@@ -143,7 +143,7 @@ public class FinanceReader {
 		HashMap<Integer, Integer> yearMap = new HashMap<>();
 		if (rowHead.size() > 2) {
 
-			for (int index = 1; index < rowHead.size() - 1; index++) {
+			for (int index = 1; index < rowHead.size(); index++) {
 				Element element = rowHead.get(index);
 				String data = DataUtil.cleanHtmlData(element.text());
 
@@ -171,7 +171,7 @@ public class FinanceReader {
 				Element element = rowBody.get(dataIndex);
 				Elements dataList = element.select("td");
 
-				for (int valueIndex = 1; valueIndex < dataList.size() - 1; valueIndex++) {
+				for (int valueIndex = 1; valueIndex < dataList.size(); valueIndex++) {
 					BigDecimal value = getData(dataList, valueIndex);
 					Finance finance = finances.get(valueIndex);
 
